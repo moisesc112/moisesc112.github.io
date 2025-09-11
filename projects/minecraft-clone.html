@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voxel Engine (MoiCraft) — YOUR NAME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>YOUR NAME</h1>
+          <div class="subtitle-small">Gameplay / Engine Programmer — C++, Unreal, Unity</div>
+        </div>
+      </div>
+      <nav aria-label="primary">
+        <a href="../index.html">Home</a>
+        <a href="../#projects">Projects</a>
+        <a href="../#tools">Tools</a>
+        <a href="../#about">About</a>
+        <a href="../resume.pdf">Resume</a>
+      </nav>
+    </header>
+
+    <main class="project-detail">
+      <h1>Voxel Engine (MoiCraft)</h1>
+      <p><strong>Stack:</strong> C++ / OpenGL / Multithreading</p>
+      <img src="../assets/terrain.png" alt="MoiCraft Screenshot" class="hero-img">
+      <p>
+        MoiCraft is my custom voxel engine inspired by Minecraft. It features procedurally generated terrain using Perlin noise, chunk-based rendering, face culling for performance, and multithreaded chunk generation.
+      </p>
+      <ul>
+        <li>Greedy meshing for reduced draw calls</li>
+        <li>Worker thread for chunk loading and mesh generation</li>
+        <li>OpenGL VAO/VBO management for batched face rendering</li>
+      </ul>
+      <p class="links-inline">
+        <a href="https://github.com/YOUR_GH/moicraft" target="_blank" rel="noreferrer">View Code on GitHub</a>
+        <span>·</span>
+        <a href="https://youtu.be/YOUR_VIDEO" target="_blank" rel="noreferrer">Watch Demo</a>
+      </p>
+    </main>
+
+    <footer>
+      © <span id="y1"></span> YOUR NAME — <a href="mailto:you@example.com">you@example.com</a>
+    </footer>
+  </div>
+  <script>document.getElementById('y1').textContent = new Date().getFullYear()</script>
+</body>
+</html>

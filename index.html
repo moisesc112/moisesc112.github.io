@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YOUR NAME — Gameplay Programmer</title>
+  <meta name="description" content="Gameplay/Engine Programmer portfolio — projects, write‑ups, and contact." />
+  <meta property="og:title" content="YOUR NAME — Gameplay Programmer" />
+  <meta property="og:description" content="Project‑first portfolio showcasing games, tools, and engines." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>YOUR NAME</h1>
+          <div class="subtitle-small">Gameplay / Engine Programmer — C++, Unreal, Unity</div>
+        </div>
+      </div>
+      <nav aria-label="primary">
+        <a href="#projects">Projects</a>
+        <a href="#tools">Tools</a>
+        <a href="#about">About</a>
+        <a href="resume.pdf">Resume</a>
+        <a href="mailto:you@example.com">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO / BLURB + QUICK LINKS -->
+    <section class="hero">
+      <div class="blurb">
+        <div class="kicker">Hello!</div>
+        <div class="title">I build gameplay systems, tools, and rendering experiments.</div>
+        <p class="subtitle">Below are my featured builds—each with write‑ups and source.</p>
+        <div class="links">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/YOUR_GH" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn" href="https://www.youtube.com/@YOURYT" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS GRID (three large clickable boxes) -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="sr-only">Featured Projects</h2>
+      <div class="grid">
+        <!-- Card 1 -->
+        <a class="card" href="projects/minecraft-clone.html">
+          <div class="thumb" style="background-image:url('assets/terrain.png')"></div>
+          <div class="veil"></div>
+          <div class="meta">
+            <span class="badge">C++ / OpenGL</span>
+            <h3>Voxel Engine (MoiCraft)</h3>
+            <div class="tags">Chunk meshing • greedy meshing • multithreaded generation • Perlin terrain</div>
+          </div>
+        </a>
+        <!-- Card 2 -->
+        <a class="card" href="projects/unreal-battle-system.html">
+          <div class="thumb" style="background-image:url('assets/magic_mayhem_main_menu.png')"></div>
+          <div class="veil"></div>
+          <div class="meta">
+            <span class="badge">Unreal / C++</span>
+            <h3>Turn‑Based Battle System</h3>
+            <div class="tags">PaperZD • Enhanced Input • data‑driven moves • AI trainers</div>
+          </div>
+        </a>
+        <!-- Card 3 -->
+        <a class="card" href="projects/racing-fuzzy-ai.html">
+          <div class="thumb" style="background-image:url('assets/bingbong.jpg')"></div>
+          <div class="veil"></div>
+          <div class="meta">
+            <span class="badge">Unity / C# / AI</span>
+            <h3>Racing Agent with Fuzzy Logic</h3>
+            <div class="tags">Throttle/steer controllers • sweeper test • rule tuning</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Secondary: more items / write‑ups / tools -->
+    <section class="section" id="tools">
+      <h2>More Projects & Tools</h2>
+      <div class="list">
+        <div class="mini">
+          <h4>Shader Toybox</h4>
+          <p>GLSL experiments: PBR, SSAO, and signed‑distance fields.</p>
+        </div>
+        <div class="mini">
+          <h4>Level Editor Utilities</h4>
+          <p>Unreal editor tool scripts for batch prefab swaps & navmesh baking.</p>
+        </div>
+        <div class="mini">
+          <h4>Pathfinder Sandbox</h4>
+          <p>A* vs. JPS vs. Flow Fields benchmarked on grid/mesh maps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <h2>About</h2>
+      <div class="mini">
+        <p>Gameplay / Engine Programmer with a focus on C++ and real‑time systems. I like building performant, readable systems and documenting them with clear write‑ups and profiling results.</p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> YOUR NAME — <a href="mailto:you@example.com">you@example.com</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
