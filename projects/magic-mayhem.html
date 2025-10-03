@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Magic Mayhem (Co-op Wave Survival) — Moises Castro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Moises Castro</h1>
+          <div class="subtitle-small">Programmer | MSCS Candidate at Georgia Tech — C++, C#, Unreal, Unity</div>
+        </div>
+      </div>
+      <nav aria-label="primary">
+        <a href="../index.html">Home</a>
+      </nav>
+    </header>
+
+    <main class="project-detail">
+      <h1>Magic Mayhem (Co-op Wave Survival)</h1>
+      <p><strong>Stack:</strong> Unity / C# / Multiplayer</p>
+      <img src="../assets/magic_mayhem_combat.png" alt="Magic Mayhem Screenshot" class="hero-img">
+      <p>
+        Magic Mayhem is a co-op wave survival game built in Unity. I implemented scalable wave spawning,
+        player abilities with cooldowns and VFX, and integrated sound and UI systems to enhance immersion.
+      </p>
+      <ul>
+        <li>Wave system supporting progressive difficulty and varied enemy types</li>
+        <li>Implemented abilities: Ice Block, Chain Lightning, Meteor Strike, Ice Cone</li>
+        <li>Collaborated with a 4-person team using Git for version control</li>
+      </ul>
+
+      <div class="video-wrapper" style="position:relative;padding-top:56.25%;margin:2rem 0;">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/onranZEXbCc"
+          title="Magic Mayhem Demo"
+          style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="https://github.com/moisesc112/magic-mayhem" target="_blank" rel="noreferrer">
+          View Code on GitHub
+        </a>
+        <a class="btn" href="https://www.youtube.com/watch?v=onranZEXbCc" target="_blank" rel="noreferrer">
+          Watch on Youtube
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      © <span id="y2"></span> Moises Castro — <a href="mailto:moisescastro112@gmail.com">moisescastro112@gmail.com</a>
+    </footer>
+  </div>
+  <script>document.getElementById('y2').textContent = new Date().getFullYear()</script>
+</body>
+</html>
