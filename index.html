@@ -3,99 +3,518 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Moises Castro — Programmer | MSCS Candidate at Georgia Tech</title>
-  <meta name="description" content="Programmer portfolio — projects, write‑ups, and contact." />
-  <meta property="og:title" content="Moises Castro — Programmer | MSCS Candidate at Georgia Tech" />
-  <meta property="og:description" content="Project‑first portfolio showcasing games, tools, and engines." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <meta property="og:image" content="assets/og-image.png" />
+  <title>Moises Castro — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f7fa;          /* light background */
+      --panel: #ffffff;       /* card background */
+      --header-text: #ffffff; /* header text color */
+      --text: #1e293b;        /* main text color */
+      --subtext: #64748b;     /* muted text color */
+      --accent: #2563eb;      /* accent blue */
+      --border: #e2e8f0;      /* border color */
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-container h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--header-text);
+      margin: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--header-text);
+      font-weight: 600;
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Section */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2.section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    p.section-subtitle {
+      color: var(--subtext);
+      margin-top: 0;
+    }
+
+    /* Card Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .card-link:visited {
+      color: inherit;
+    }
+
+    .featured-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .featured-link:visited {
+      color: inherit;
+    }
+
+    .card,
+    .featured-project {
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card p {
+      color: var(--subtext);
+      margin: 0 0 1rem;
+    }
+
+    .byline {
+      font-size: 0.9rem;
+      color: var(--subtext);
+    }
+
+    /* Featured Project */
+    .featured-project {
+      margin-top: 2rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: 1.65fr 1fr;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .featured-project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+    }
+
+    .featured-project img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .featured-content {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-label {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+
+    .featured-content h3 {
+      margin: 0 0 0.4rem;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .featured-tech {
+      color: var(--subtext);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .featured-content p {
+      color: var(--subtext);
+      margin: 0 0 1.3rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      align-self: flex-start;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .projects-heading {
+      margin-top: 4.5rem;
+      margin-bottom: 0;
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 800px) {
+      .featured-project {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-project img {
+        min-height: 0;
+        height: auto;
+      }
+
+      .featured-content {
+        padding: 1.5rem;
+      }
+    }
+
+    /* About */
+    .about-section {
+      background: #eef1f6;
+      padding: 72px 24px;
+      margin-top: 80px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-section h2 {
+      margin: 0 0 40px;
+      font-size: 2.25rem;
+      color: var(--text);
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .about-photo-wrapper {
+      width: 180px;
+      height: 180px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .about-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transform: scale(1.5);
+    }
+
+    .about-text {
+      max-width: 760px;
+    }
+
+    .about-text p {
+      margin: 0 0 16px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .about-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .about-links a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .about-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .about-section {
+        padding: 56px 24px;
+      }
+
+      .about-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+      }
+
+      .about-photo {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      color: var(--subtext);
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>Moises Castro</h1>
-          <div class="subtitle-small">Programmer | MSCS Candidate at Georgia Tech — C++, C#, Unreal, Unity</div>
-        </div>
-      </div>
-      <nav aria-label="primary">
+  <header>
+    <div class="nav-container">
+      <h1>Moises Castro</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#featured">Featured Project</a>
+        <a href="#projects">Projects</a>
         <a href="mailto:moisescastro112@gmail.com">Contact</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- HERO / BLURB + QUICK LINKS -->
-    <section class="hero">
-      <div class="blurb">
-        <div class="kicker">Hello!</div>
-        <div class="title">I make games, mods, and custom game engines.</div>
-        <p class="subtitle">Below are my featured projects with write‑ups and github links.</p>
-        <div class="links">
-          <a class="btn" href="https://github.com/moisesc112" target="_blank" rel="noreferrer">GitHub</a>
+  <main>
+    <section id="featured">
+      <h2 class="section-title">Featured Project</h2>
+
+      <a class="featured-link" href="projects/orca_engine.html">
+        <article class="featured-project">
+          <img
+            src="assets/orca_engine_default_scene_windowed_cropped.png"
+            alt="OrcaEngine Vulkan editor"
+          >
+
+          <div class="featured-content">
+            <h3>Orca Engine</h3>
+
+            <div class="featured-tech">
+              C++20 • Vulkan 1.3 • GLSL
+            </div>
+
+            <p>
+              A 3D rendering engine and editor built with Vulkan 1.3,
+              featuring a custom ECS, offscreen editor viewport, Phong
+              lighting, 8x MSAA, directional shadow mapping with PCF
+              filtering, scene serialization, and real-time rendering
+              diagnostics.
+            </p>
+
+            <span class="project-link">
+            </span>
+          </div>
+        </article>
+      </a>
+    </section>
+
+    <h2 id="projects" class="projects-heading">Projects</h2>
+
+    <section class="grid">
+      <a class="card-link" href="projects/the_long_crawl.html">
+        <div class="card">
+          <img
+            src="assets/the_long_crawl.png"
+            alt="The Long Crawl"
+          >
+
+          <div class="card-content">
+            <h3>The Long Crawl</h3>
+
+            <p>
+              Unreal Engine 5 gameplay prototype featuring custom movement,
+              dash mechanics, NPC navigation, and state-based enemy AI.
+            </p>
+
+            <div class="byline">
+              Unreal Engine 5 • C++ • Blueprints
+            </div>
+          </div>
+        </div>
+      </a>
+
+
+      <a class="card-link" href="projects/minecraft_clone.html">
+        <div class="card">
+          <img
+            src="assets/terrain.png"
+            alt="Voxel Engine terrain"
+          >
+
+          <div class="card-content">
+            <h3>Voxel Engine (MoiCraft)</h3>
+
+            <p>
+              Real-time C++ and OpenGL voxel engine with chunk meshing,
+              multithreaded generation, and procedural terrain.
+            </p>
+
+            <div class="byline">
+              C++ • OpenGL
+            </div>
+          </div>
+        </div>
+      </a>
+
+
+      <a class="card-link" href="projects/magic_mayhem.html">
+        <div class="card">
+          <img
+            src="assets/magic_mayhem_main_menu.png"
+            alt="Magic Mayhem"
+          >
+
+          <div class="card-content">
+            <h3>Magic Mayhem</h3>
+
+            <p>
+              Co-op wave survival game with scalable enemy waves,
+              player abilities, and multiplayer gameplay systems.
+            </p>
+
+            <div class="byline">
+              Unity • C#
+            </div>
+          </div>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <h2>About Me</h2>
+
+      <div class="about-content">
+        <div class="about-photo-wrapper">
+          <img
+            class="about-photo"
+            src="assets/about_me.jpeg"
+            alt="Moises Castro"
+          >
+        </div>
+
+        <div class="about-text">
+          <p>
+            Hi! I'm Moises, a programmer and MSCS student at Georgia Tech with
+            a background in mechanical engineering. I'm interested in game
+            development, graphics programming, and engine development, and I enjoy
+            working on the systems behind real-time games and rendering.
+          </p>
+
+          <p>
+            Outside of programming, I enjoy running, video games, and hiking.
+          </p>
+
+          <div class="about-links">
+            <a href="https://github.com/moisesc112"
+              target="_blank"
+              rel="noreferrer">GitHub</a>
+
+            <a href="https://www.linkedin.com/in/moises-castro-3baa88140/"
+              target="_blank"
+              rel="noreferrer">LinkedIn</a>
+
+            <a href="mailto:moisescastro112@gmail.com">Email</a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FEATURED PROJECTS GRID -->
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="sr-only">Featured Projects</h2>
-      <div class="grid">
-        <!-- Card 1 -->
-        <a class="card" href="projects/minecraft-clone.html">
-          <div class="thumb" style="background-image:url('assets/terrain.png')"></div>
-          <div class="veil"></div>
-          <div class="meta">
-            <span class="badge">C++ / OpenGL</span>
-            <h3>Voxel Engine (MoiCraft)</h3>
-            <div class="tags">Chunk meshing • Multithreaded generation • Perlin terrain</div>
-          </div>
-        </a>
-        <!-- Card 2 -->
-        <a class="card" href="projects/magic-mayhem.html">
-          <div class="thumb" style="background-image:url('assets/magic_mayhem_main_menu.png')"></div>
-          <div class="veil"></div>
-          <div class="meta">
-            <span class="badge">Unity / C#</span>
-            <h3>Magic Mayhem (Co-op Wave Survival)</h3>
-            <div class="tags">Wave spawning • Abilities • Multiplayer co-op</div>
-          </div>
-        </a>
-        <!-- Card 3 -->
-        <a class="card" href="projects/plushie-party.html">
-          <div class="thumb" style="background-image:url('assets/bingbong.jpg')"></div>
-          <div class="veil"></div>
-          <div class="meta">
-            <span class="badge">Unity / C# / Modding</span>
-            <h3>Peak Mod (Plushie Party)</h3>
-            <div class="tags">Custom content • Scripting • Game mods</div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="section" id="about">
-      <h2>About</h2>
-      <div class="mini">
-        <p>Hey! My name is Moises, a US-based programmer. I am a current MSCS student at Georgia Tech. I am a former Mechanical Engineer aiming to become a Game Developer! I love games, whether 
-          its playing them, making them, or even trying to mod them. I'm eager to learn more about developing them and increasing my technical knowledge.
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="y"></span> Moises Castro — <a href="mailto:moisescastro112@gmail.com">moisescastro112@gmail.com</a>
-    </footer>
-  </div>
+  <footer>
+    © <span id="year"></span> Moises Castro — moisescastro112@gmail.com
+  </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

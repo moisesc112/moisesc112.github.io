@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Voxel Engine (MoiCraft) — Moises Castro</title>
+  <meta
+    name="description"
+    content="MoiCraft is a custom voxel engine written in C++ and OpenGL featuring procedural terrain, chunk-based rendering, and multithreaded generation."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #f6f7fa;
+      --panel: #ffffff;
+      --header-text: #ffffff;
+      --text: #1e293b;
+      --subtext: #64748b;
+      --accent: #2563eb;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-container h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--header-text);
+      margin: 0;
+    }
+
+    .nav-container h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--header-text);
+      font-weight: 600;
+      margin-left: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+
+    /* Main project page */
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      color: var(--subtext);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+
+    /* Project heading */
+
+    .project-heading {
+      max-width: 800px;
+      margin-bottom: 2.5rem;
+    }
+
+    .project-tech {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-heading h1 {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin: 0 0 1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .project-description {
+      color: var(--subtext);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 760px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 1.5rem;
+    }
+
+    .project-links a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Hero screenshot */
+
+    .hero-image {
+      width: 100%;
+      display: block;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+      margin-bottom: 4.5rem;
+    }
+
+
+    /* Content sections */
+
+    .project-section {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3.5rem;
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-section h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    .section-content {
+      max-width: 760px;
+    }
+
+    .section-content p {
+      color: var(--subtext);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin: 0 0 1.2rem;
+    }
+
+
+    /* Technical feature cards */
+
+    .contribution-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .contribution-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+      padding: 1.4rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    }
+
+    .contribution-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .contribution-card p {
+      margin: 0;
+      color: var(--subtext);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+
+    /* Bottom navigation */
+
+    .bottom-links {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-top: 3rem;
+      margin-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .bottom-links a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .bottom-links a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Footer */
+
+    footer {
+      text-align: center;
+      color: var(--subtext);
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--subtext);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 800px) {
+      .project-heading h1 {
+        font-size: 2.6rem;
+      }
+
+      .project-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .contribution-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding-top: 2.5rem;
+      }
+
+      .nav-container {
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin-left: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .project-heading h1 {
+        font-size: 2.2rem;
+      }
+
+      .project-links {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .bottom-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <header>
+    <div class="nav-container">
+
+      <h1>
+        <a href="../index.html">Moises Castro</a>
+      </h1>
+
+      <nav>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#featured">Featured Project</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="mailto:moisescastro112@gmail.com">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <a class="back-link" href="../index.html#projects">
+      ← Back to projects
+    </a>
+
+
+    <!-- PROJECT HEADER -->
+
+    <section class="project-heading">
+
+      <div class="project-tech">
+        C++ • OpenGL • Multithreading
+      </div>
+
+      <h1>Voxel Engine (MoiCraft)</h1>
+
+      <p class="project-description">
+        A custom voxel engine written in C++ and OpenGL featuring
+        procedurally generated terrain, chunk-based rendering,
+        multithreaded generation, and rendering optimizations.
+      </p>
+
+      <div class="project-links">
+
+        <a
+          href="https://github.com/moisesc112/moi-craft"
+          target="_blank"
+          rel="noreferrer">
+          View on GitHub →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- HERO IMAGE -->
+
+    <img
+      src="../assets/terrain.png"
+      alt="Procedurally generated terrain rendered in MoiCraft"
+      class="hero-image"
+    >
+
+
+    <!-- OVERVIEW -->
+
+    <section class="project-section">
+
+      <h2>Overview</h2>
+
+      <div class="section-content">
+
+        <p>
+          MoiCraft is a voxel engine inspired by Minecraft that I built
+          in C++ using OpenGL. The engine divides the world into chunks
+          and generates terrain procedurally using Perlin noise.
+        </p>
+
+        <p>
+          I focused on the systems behind generating, meshing, and
+          rendering voxel terrain efficiently, including multithreaded
+          chunk generation and eliminating geometry that does not need
+          to be rendered.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- TECHNICAL FEATURES -->
+
+    <section class="project-section">
+
+      <h2>Technical Features</h2>
+
+      <div class="section-content">
+
+        <div class="contribution-grid">
+
+          <div class="contribution-card">
+            <h3>Procedural Terrain</h3>
+            <p>
+              Generated voxel terrain using Perlin noise to produce
+              varying terrain heights across the world.
+            </p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>Chunk System</h3>
+            <p>
+              Divided the voxel world into chunks so terrain could be
+              generated, meshed, and rendered in manageable regions.
+            </p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>Multithreaded Generation</h3>
+            <p>
+              Used a worker thread for chunk loading and mesh generation
+              so expensive terrain work could run separately from the
+              main rendering loop.
+            </p>
+          </div>
+
+          <div class="contribution-card">
+            <h3>Mesh Optimization</h3>
+            <p>
+              Culled interior voxel faces during mesh generation to
+              reduce unnecessary geometry sent through the rendering
+              pipeline.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RENDERING -->
+
+    <section class="project-section">
+
+      <h2>Rendering</h2>
+
+      <div class="section-content">
+
+        <p>
+          Voxel chunks are converted into renderable meshes rather than
+          drawing every block independently. Faces surrounded by adjacent
+          blocks are omitted during mesh generation, reducing the amount
+          of geometry required to render the terrain.
+        </p>
+
+        <p>
+          The project gave me experience working with OpenGL rendering,
+          procedural geometry, CPU-side mesh generation, multithreading,
+          and the performance considerations involved in rendering large
+          voxel environments.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOTTOM LINKS -->
+
+    <div class="bottom-links">
+
+      <a
+        href="https://github.com/moisesc112/moi-craft"
+        target="_blank"
+        rel="noreferrer">
+        View source on GitHub →
+      </a>
+
+      <a href="../index.html#projects">
+        View other projects →
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    © <span id="year"></span> Moises Castro —
+    <a href="mailto:moisescastro112@gmail.com">
+      moisescastro112@gmail.com
+    </a>
+  </footer>
+
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>

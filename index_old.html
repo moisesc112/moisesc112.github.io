@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moises Castro — Programmer | MSCS Candidate at Georgia Tech</title>
+  <meta name="description" content="Programmer portfolio — projects, write‑ups, and contact." />
+  <meta property="og:title" content="Moises Castro — Programmer | MSCS Candidate at Georgia Tech" />
+  <meta property="og:description" content="Project‑first portfolio showcasing games, tools, and engines." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Moises Castro</h1>
+          <div class="subtitle-small">Programmer | MSCS Candidate at Georgia Tech — C++, C#, Unreal, Unity</div>
+        </div>
+      </div>
+      <nav aria-label="primary">
+        <a href="mailto:moisescastro112@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO / BLURB + QUICK LINKS -->
+    <section class="hero">
+      <div class="blurb">
+        <div class="kicker">Hello!</div>
+        <div class="title">I make games, mods, and custom game engines.</div>
+        <p class="subtitle">Below are my featured projects with write‑ups and github links.</p>
+        <div class="links">
+          <a class="btn" href="https://github.com/moisesc112" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS GRID -->
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="sr-only">Featured Projects</h2>
+      <div class="grid">
+        <!-- Card 1 -->
+        <a class="card" href="projects/minecraft-clone.html">
+          <div class="thumb" style="background-image:url('assets/terrain.png')"></div>
+          <div class="veil"></div>
+          <div class="meta">
+            <span class="badge">C++ / OpenGL</span>
+            <h3>Voxel Engine (MoiCraft)</h3>
+            <div class="tags">Chunk meshing • Multithreaded generation • Perlin terrain</div>
+          </div>
+        </a>
+        <!-- Card 2 -->
+        <a class="card" href="projects/magic-mayhem.html">
+          <div class="thumb" style="background-image:url('assets/magic_mayhem_main_menu.png')"></div>
+          <div class="veil"></div>
+          <div class="meta">
+            <span class="badge">Unity / C#</span>
+            <h3>Magic Mayhem (Co-op Wave Survival)</h3>
+            <div class="tags">Wave spawning • Abilities • Multiplayer co-op</div>
+          </div>
+        </a>
+        <!-- Card 3 -->
+        <a class="card" href="projects/plushie-party.html">
+          <div class="thumb" style="background-image:url('assets/bingbong.jpg')"></div>
+          <div class="veil"></div>
+          <div class="meta">
+            <span class="badge">Unity / C# / Modding</span>
+            <h3>Peak Mod (Plushie Party)</h3>
+            <div class="tags">Custom content • Scripting • Game mods</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <h2>About</h2>
+      <div class="mini">
+        <p>Hey! My name is Moises, a US-based programmer. I am a current MSCS student at Georgia Tech. I am a former Mechanical Engineer aiming to become a Game Developer! I love games, whether 
+          its playing them, making them, or even trying to mod them. I'm eager to learn more about developing them and increasing my technical knowledge.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Moises Castro — <a href="mailto:moisescastro112@gmail.com">moisescastro112@gmail.com</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
