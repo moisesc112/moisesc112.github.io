@@ -282,6 +282,83 @@
         gap: 8px;
       }
     }
+
+    .showcase {
+      margin: 2rem 0 3rem;
+    }
+
+    .showcase:last-child {
+      margin-bottom: 0;
+    }
+
+    .showcase img,
+    .showcase-video {
+      width: 100%;
+      display: block;
+      border-radius: 0.8rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+
+    .showcase h3 {
+      margin: 1.25rem 0 0.4rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .showcase p {
+      margin-bottom: 0;
+    }
+
+    .showcase-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    .showcase-row.reverse {
+      grid-template-columns: 1fr 1.6fr;
+    }
+
+    .showcase-row.reverse .showcase-media {
+      order: 2;
+    }
+
+    .showcase-row.reverse .showcase-text {
+      order: 1;
+    }
+
+    .showcase-media video {
+      width: 100%;
+      display: block;
+      border-radius: 0.8rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+
+    .showcase-text h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.15rem;
+    }
+
+    .showcase-text p {
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .showcase-row,
+      .showcase-row.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-row.reverse .showcase-media,
+      .showcase-row.reverse .showcase-text {
+        order: initial;
+      }
+    }
+
   </style>
 </head>
 
@@ -326,14 +403,17 @@
         enemy AI.
       </p>
 
-      <!-- Add GitHub/demo links here if you publish them -->
-      <!--
+  
       <div class="project-links">
-        <a href="#" target="_blank" rel="noreferrer">
+        <a
+          href="https://github.com/moisesc112/TurtleProject"
+          target="_blank"
+          rel="noreferrer">
           View on GitHub →
         </a>
+
       </div>
-      -->
+      
 
     </section>
 
@@ -370,6 +450,174 @@
 
     <section class="project-section">
 
+      <h2>Player Movement</h2>
+
+      <div class="section-content">
+
+        <p>
+          I developed custom movement behavior for the player character,
+          including slope-based movement and friction that allow traversal
+          to react naturally to changes in terrain.
+        </p>
+
+        <div class="showcase">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            class="showcase-video"
+          >
+            <source
+              src="../assets/Player_Slope_Demo.mp4"
+              type="video/mp4"
+            >
+          </video>
+
+          <h3>Slope Movement</h3>
+
+          <p>
+            Slope steepness directly affects player movement, with steeper climbs reducing 
+            speed and draining stamina. Moving downhill increases speed and transitions 
+            the player into a sliding state.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="project-section">
+
+      <h2>Enemy AI</h2>
+
+      <div class="section-content">
+
+        <p>
+          Enemies use state-based logic to respond to the player while
+          supporting different behaviors for each enemy type. I structured
+          the gameplay logic so shared functionality could be reused while
+          individual enemies could implement their own movement, detection,
+          and attack behavior.
+        </p>
+
+
+        <div class="showcase-row">
+
+          <div class="showcase-media">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source
+                src="../assets/Patrol_Crab_Demo.mp4"
+                type="video/mp4"
+              >
+            </video>
+          </div>
+
+          <div class="showcase-text">
+            <h3>Patrol Crab</h3>
+            <p>
+              Idles until the player enters its
+              detection range, then transitions into combat behavior and
+              pursues the player.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="showcase-row reverse">
+
+          <div class="showcase-media">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source
+                src="../assets/Ambush_Crab_Demo.mp4"
+                type="video/mp4"
+              >
+            </video>
+          </div>
+
+          <div class="showcase-text">
+            <h3>Ambush Crab</h3>
+            <p>
+              Remains concealed until the player enters its trigger area,
+              then transitions into its attack behavior and initiates the
+              encounter.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="showcase-row">
+
+          <div class="showcase-media">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source
+                src="../assets/Bird_Enemy_Demo.mp4"
+                type="video/mp4"
+              >
+            </video>
+          </div>
+
+          <div class="showcase-text">
+            <h3>Bird Enemy</h3>
+            <p>
+              The bird attacks when the player enters its detection area, casting 
+              a tracking shadow before swooping down to grab them. A successful grab 
+              deals damage and drags the player back to the start unless they break free.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="project-section">
+
+      <h2>NPC AI</h2>
+
+      <div class="section-content">
+
+        <p>
+          NPC turtles use their own state-based behavior to navigate through
+          the environment toward their goal.
+        </p>
+
+        <div class="showcase">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            class="showcase-video"
+          >
+            <source
+              src="../assets/Turtle_AI_Demo.mp4"
+              type="video/mp4"
+            >
+          </video>
+
+          <h3>Turtle Navigation</h3>
+
+          <p>
+            Turtle NPCs navigate between waypoints using weighted random selection to vary their paths. 
+            They reuse the player’s stamina and slope-based movement systems, 
+            allowing their traversal to respond to terrain in the same way as the player.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="project-section">
+
       <h2>Technical Features</h2>
 
       <div class="section-content">
@@ -393,11 +641,10 @@
           </div>
 
           <div class="contribution-card">
-            <h3>Enemy AI</h3>
+            <h3>State-Based AI</h3>
             <p>
-              Built state-based behavior for multiple enemy types,
-              including crab and bird enemies with different gameplay
-              behaviors.
+              Built distinct state-based behaviors for multiple enemy
+              and NPC types.
             </p>
           </div>
 
@@ -411,31 +658,6 @@
           </div>
 
         </div>
-
-      </div>
-
-    </section>
-
-
-    <section class="project-section">
-
-      <h2>AI & Gameplay</h2>
-
-      <div class="section-content">
-
-        <p>
-          NPC turtles navigate toward their goal while enemy actors use
-          state-based logic to control their behavior. Different enemy
-          types can implement their own behavior while sharing reusable
-          gameplay systems where appropriate.
-        </p>
-
-        <p>
-          Building the prototype gave me experience structuring gameplay
-          code in Unreal Engine and separating movement, AI, and actor
-          behavior into systems that could be reused as the prototype
-          expanded.
-        </p>
 
       </div>
 
